@@ -99,7 +99,11 @@
                         <h5 class="modal-title" id="ingredientModalLabel">Modal title</h5>
                         <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">...</div>
+                    <div class="modal-body">
+                        <input type="text" id="ingredient-input">
+                        <button type="button" onclick="addIngredient()">Add</button>
+                        <ul class="list-group list-group-light ingredient-list"></ul>
+                    </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
                         <button type="button" class="btn btn-primary" data-mdb-dismiss="modal" id="ingredientSearchButton">Bring Up Recipes</button>
