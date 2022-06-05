@@ -71,20 +71,42 @@
 
     <div class="container">
         <!-- generate dynamically based on the JSON(api) -->
-        <!-- <div class="row gy-5">
+        <div class="row gy-5">
             <div class="col-sm-4">
                 <div class="card">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg"
-                        class="card-img-top" alt="photograph of a variety of food">
+                        class="card1-img-top" alt="photograph of a variety of food">
                     <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <h5 class="card-title1">Special title treatment</h5>
+                        <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+                        <a href="#" class="btn btn-primary">See more</a>
                     </div>
                 </div>
             </div>
-        </div> -->
-
+            <div class="col-sm-4">
+                <div class="card">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg"
+                        class="card2-img-top" alt="photograph of a variety of food">
+                    <div class="card-body">
+                        <h5 class="card-title2">Special title treatment</h5>
+                        <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+                        <a href="#" class="btn btn-primary">See more</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg"
+                        class="card3-img-top" alt="photograph of a variety of food">
+                    <div class="card-body">
+                        <h5 class="card-title3">Special title treatment</h5>
+                        <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+                        <a href="#" class="btn btn-primary">See more</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
         <div class="d-grid py-3">
 
              <button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#ingredientModal">Find Your Recipe!</button>
@@ -101,12 +123,12 @@
                     </div>
                     <div class="modal-body">
                         <input type="text" id="ingredient-input">
-                        <button type="button" onclick="addIngredient()">Add</button>
+                        <button type="button" id="add-button" onclick="addIngredient()">Add</button>
                         <ul class="list-group list-group-light ingredient-list"></ul>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" data-mdb-dismiss="modal" id="ingredientSearchButton">Bring Up Recipes</button>
+                        <button type="button" class="btn btn-primary" onclick="recipeFinder()" data-mdb-dismiss="modal" id="ingredientSearchButton">Bring Up Recipes</button>
                     </div>
                 </div>
             </div>
