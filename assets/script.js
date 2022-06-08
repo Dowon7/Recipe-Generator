@@ -113,9 +113,4 @@ function resetFind(){
 
 // // }
 
-// const ingredientSearchButton = document.getElementById("ingredientSearchButton");
-// ingredientSearchButton.addEventListener("click", fetchRecipes);
-const ingredientSearchButton = document.getElementById("ingredientSearchButton");
-ingredientSearchButton.addEventListener("click", fetchRecipes);
-
 // Testing my new branch hihi 
