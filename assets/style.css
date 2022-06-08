@@ -6,4 +6,8 @@
 .list-item-wrapper span {
     grid-column: 1 / 12;
 }
-    
+
+.card {
+    padding-top: 10%;
+    margin-top: 5%;
+}
