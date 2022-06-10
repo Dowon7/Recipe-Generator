@@ -59,8 +59,6 @@ function removeIngredient(event){
     console.log(ingredientArray);
 }
 
-// Testing my new branch hihi 
-
 function fetchSpoon() {
 
     $.getJSON("https://api.spoonacular.com/recipes/complexSearch?apiKey=f1ff032dbf3e458ea914a1c136a78dcc", function (data) {
@@ -78,7 +76,6 @@ function randomRecipes() {
     })
 }
 
-// ADDING LEO CODE
 
 let ingredientCount = 0;
 let ingredientArray = [];
@@ -185,77 +182,4 @@ function resetFind() {
     ingredientArray = [];
     recipeList = [];
 }
-
-// function fetchRecipes() {
-//     // API request for USDA food list
-//     $.getJSON("https://api.nal.usda.gov/fdc/v1/foods/list?api_key=nZxmwjSMlpgFxlnvqEMSLAhOnpHCFmRxENBsiGIA", function(data){
-
-//         console.log(data);
-
-//     });
-
-// // }
-
-// const ingredientSearchButton = document.getElementById("ingredientSearchButton");
-// ingredientSearchButton.addEventListener("click", fetchRecipes);
-
-
-
-
-//LIGHT DARK MODE START
-var themeButtonEl = $('#theme-btn');
-var isDark = true;
-
-themeButtonEl.on('click', function () {
-    if (isDark) {
-        $('body').css({ 'background-color': '#ffffff', color: '#1a1a1a' });
-        isDark = !isDark;
-    } else {
-        $('body').css({ 'background-color': '#1a1a1a', color: '#1a1a1a' });
-        isDark = !isDark;
-    }
-});
-//LIGHT DARK MODE END
-
-//SEARCH BAR START
-let = searchable = [recipeList];
-
-const searchInput = document.getElementById('search');
-const searchWrapper = document.querySelector('.d-flex');
-const resultsWrapper = document.querySelector('.results');
-const searchButton = document.getElementById('searchbtn');
-
-searchButton.addEventListener('click', (e) => {
-    console.log('i have been clicked tho');
-});
-
-
-searchInput.addEventListener('keyup', (e) => { // when a key is typed inside search bar
-    console.log(e.target.value);                // log it
-    let results = [];
-    let input = searchInput.value;
-
-    if (input.length) {
-        results = searchable.filter((item) => {
-            return item.toString().toLowerCase().includes(input.toString().toLowerCase());
-        });
-    }
-
-    renderResults(results);
-});
-
-function renderResults(results) {
-    if (!results.length) {
-        return searchWrapper.classList.remove('show');
-    }
-
-    let content = results.map((item) => {
-        return `<li>${item}</li>`
-    }).join('');
-
-    searchWrapper.classList.add('show')
-    resultsWrapper.innerHTML = `<ul>${content}</ul>`;
-}
-
-//SEARCH BAR END
 
