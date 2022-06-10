@@ -1,3 +1,6 @@
+let ingredientCount = 0;
+let ingredientArray = [];
+let recipeList = [];
 
 function fetchRecipes() {
     // API request for USDA food list
@@ -11,10 +14,50 @@ function fetchRecipes() {
 
     });
 
+document.getElementById('ingredient-input').addEventListener("keypress", function(event) {
+    // If the user presses the "Enter" key on the keyboard
+    if (event.key === "Enter") {
+      // Cancel the default action, if needed
+      event.preventDefault();
+      // Trigger the button element with a click
+      document.getElementById("add-button").click();
+    }
+  });
+
+function addIngredient() {
+    let newIngredient = document.getElementById("ingredient-input").value;
+    console.log(newIngredient);
+    ingredientArray[ingredientCount] = newIngredient;
+    console.log(ingredientArray);
+    // const ingredientEl = $("<li>").addClass("list-group-item list-group-item-action");
+    const ingridient = $("<span>");
+    ingridient.text(newIngredient);
+    const delButton = $("<button>").addClass("btn-close");
+    delButton.attr("aria-label","Close");
+    delButton.attr("item-count", ingredientCount);
+    delButton.click(removeIngredient);
+    const itemWrapper = $("<div>").addClass("list-item-wrapper");
+    itemWrapper.append(ingridient);
+    itemWrapper.append(delButton);
+    const listItem = $("<li>").addClass(`list-group-item list-group-item-action ${ingredientCount}`);
+    listItem.append(itemWrapper);
+    const ingredientList = $(".ingredient-list");
+    ingredientList.append(listItem);
+    document.getElementById("ingredient-input").value = "";
+    ingredientCount +=1;
+    return delButton;
+    
 }
 
-const ingredientSearchButton = document.getElementById("ingredientSearchButton");
-ingredientSearchButton.addEventListener("click", fetchRecipes);
+function removeIngredient(event){
+    let number = event.target;
+    console.log(number.getAttribute("item-count"));
+    console.log(event.target);
+    const removedItem = $(`.${number.getAttribute("item-count")}`);
+    removedItem.remove();
+    ingredientArray[number.getAttribute("item-count")] = null;
+    console.log(ingredientArray);
+}
 
 // Testing my new branch hihi 
 
