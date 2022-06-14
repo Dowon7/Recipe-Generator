@@ -13,6 +13,7 @@
     <!-- MDB -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.1.0/mdb.min.js" defer></script>
     <script src="assets/script.js" defer></script>
+    <script src="assets/cocktail-script.js" defer></script>
 
     <!-- MDB CSS -->
     <!-- Font Awesome -->
@@ -105,36 +106,6 @@
                         <p class="used-ingredient3"></p>
                         <p class="missed-ingredient3"></p>
                         <button class="btn btn-primary" number="3" onClick="showRecipe(this)">See Recipe</button>
-                        <!-- <div class="accordion" id="accordionExample"> 
-                            <div class="accordion-item">
-                              <h2 class="accordion-header" id="headingOne">
-                            <button
-                                number = "3"
-                                onClick="show"
-                                class="accordion-button collapsed btn-primary"
-                                type="button"
-                                data-mdb-toggle="collapse"
-                                data-mdb-target="#collapseOne"
-                                aria-expanded="false"
-                                aria-controls="collapseOne"
-                                >
-                                  See More
-                                </button>
-                              </h2>
-                              <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-mdb-parent="#accordionExample">
-                                <div class="accordion-body">
-                                  <strong>This is the first item's accordion body.</strong> It is hidden by default,
-                                  until the collapse plugin adds the appropriate classes that we use to style each
-                                  element. These classes control the overall appearance, as well as the showing and
-                                  hiding via CSS transitions. You can modify any of this with custom CSS or
-                                  overriding our default variables. It's also worth noting that just about any HTML
-                                  can go within the <strong>.accordion-body</strong>, though the transition does
-                                  limit overflow.
-                                </div>
-                                <button type="button" class="btn btn-primary" onclick="showRecipe()">Show Recipe</button>
-                              </div>
-                            </div> 
-                          </div>-->
                     </div>
                 </div>
             </div>
@@ -145,7 +116,7 @@
         
         <div class="d-grid py-2">
 
-             <button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#ingredientModal">Ingredient Search</button>
+             <button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#ingredientModal">Ingredient Recipe Search</button>
 
         </div>
 
@@ -154,7 +125,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="ingredientModalLabel">Modal title</h5>
+                        <h5 class="modal-title" id="ingredientModalLabel">Input ingredient(s)</h5>
                         <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -165,6 +136,77 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" onClick="resetFind()">Reset Find</button>
                         <button type="button" class="btn btn-primary" onclick="recipeFinder(event)" data-mdb-dismiss="modal" id="ingredientSearchButton">Bring Up Recipes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+<!-- ------------------------------------------------------------------------------ -->
+    <div class="container">
+        <!-- generate dynamically based on the JSON(api) -->
+        <div class="row gy-5 py-3">
+            <div class="col-sm-4">
+                <div class="card">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg"
+                        class="card4-img-top" alt="photograph of a variety of food">
+                    <div class="card-body">
+                        <h5 class="card-title4">Special title treatment</h5>
+                        <p class="used-ingredient4"></p>
+                        <p class="missed-ingredient4"></p>
+                        <button class="btn btn-primary" number="4" onClick="showdrink(this)">See drink recipe</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg"
+                        class="card5-img-top" alt="photograph of a variety of food">
+                    <div class="card-body">
+                        <h5 class="card-title5">Special title treatment</h5>
+                        <p class="used-ingredient5"></p>
+                        <p class="missed-ingredient5"></p>
+                        <button class="btn btn-primary" number="5" onClick=showdrink(this)>See drink recipe</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg"
+                        class="card6-img-top" alt="photograph of a variety of food">
+                    <div class="card-body">
+                        <h5 class="card-title6">Special title treatment</h5>
+                        <p class="used-ingredient6"></p>
+                        <p class="missed-ingredient6"></p>
+                        <button class="btn btn-primary" number="6" onClick="showdrink(this)">See drink recipe</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div id="show-more-drink" class="d-none py-2 justify-content-end">
+        <button class="btn btn-primary" onClick="showMoreDrink()">Show More</button>
+    </div>
+        
+        <div class="d-grid py-2">
+
+             <button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#drinkModal">Coctail Search</button>
+
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="drinkModal" tabindex="-1" aria-labelledby="drinkModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="drinkModalLabel">Input Alcohol of choice</h5>
+                        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="text" id="drink-ingredient-input">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" onclick="drinkFinder(event)" data-mdb-dismiss="modal" id="ingredientSearchButton">Bring Up drinks</button>
                     </div>
                 </div>
             </div>
