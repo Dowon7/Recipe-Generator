@@ -1,3 +1,14 @@
+card{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: start;
+}
+.cardEach {
+    width: 31.3%;
+    box-sizing: border-box;
+}
+
 .list-item-wrapper {
     display: grid;
     grid-template-columns: repeat(12,1fr);
@@ -6,8 +17,14 @@
 .list-item-wrapper span {
     grid-column: 1 / 12;
 }
+    
 
-.card {
-    padding-top: 10%;
-    margin-top: 5%;
+#navbar-nav {
+    position: relative;
+}
+
+#theme-btn {
+    margin-left: 25rem;
+    position: absolute;
+    z-index: 2;
 }
