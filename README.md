@@ -10,6 +10,6 @@ The APIs would then allow us to display an image linked with the recipe, and the
 
 If the recipes for the food and cocktails are not to your liking, you can use the "show more" button to see more selections of recipes available.
 
-![Demo Gif](assetse/Ingridio-demo.gif)
+![Demo Gif](assets/Ingridio-demo.gif)
 
-[Access the recipe finder here!](https://dowon7.github.io/Recipe-Generator/))
+[Access the recipe finder here!](https://dowon7.github.io/Recipe-Generator/)
