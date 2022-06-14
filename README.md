@@ -2,6 +2,9 @@
 
 Ingridio is a group project where we were tasked with API integration into a webpage.
 
+We were able to make this project happen with the usage of HTML, CSS, and Javascript.
+Complemented with AJAX and MD Bootstrap.
+
 We wanted to create a practical application that is usable in everyday life, and help ease a daily challenge that many of us might have - what to eat.
 We tried for a different approach, rather than having a wheel dictate what to have as your next meal, we wanted users to be able to make a decision on what to cook, given the ingredients they may have lying on hand in the pantry or fridge.
 
