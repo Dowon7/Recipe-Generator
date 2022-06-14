@@ -1,18 +1,77 @@
 let ingredientCount = 0;
 let ingredientArray = [];
 let recipeList = [];
+let recipeId = [];
+let recipeInfo;
 
-function fetchRecipes() {
-    // API request for USDA food list
-    $.getJSON("https://api.nal.usda.gov/fdc/v1/foods/list?api_key=nZxmwjSMlpgFxlnvqEMSLAhOnpHCFmRxENBsiGIA", function (data) {
+setUp();
 
-        console.log(data);
-
-        for (var i = 0; i < data.length; i++) { // for loop to test parsing info *.description*
-            console.log(data[i].description);
+function findLast(){
+    console.log("last1");
+    let lastRecipe = window.localStorage.getItem('lastRecipe');
+    console.log(lastRecipe);
+    const settings = {
+        "async": false,
+        "crossDomain": true,
+        "url": `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/${lastRecipe}/information`,
+        "method": "GET",
+        "headers": {
+            "X-RapidAPI-Key": "10aec3ffa7mshdac16678f4fa80bp13ac63jsnadcdde4c2a5b",
+            "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
         }
+    };
+    
+    $.ajax(settings).done(function (response) {
+        recipeList.push(response);
+        console.log("last");
+})
+};
 
-    });
+function findSnack(){
+    console.log("snack1");
+    const settings = {
+        "async": false,
+        "crossDomain": true,
+        "url": `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random?tags=dessert&number=1`,
+        "method": "GET",
+        "headers": {
+            "X-RapidAPI-Key": "10aec3ffa7mshdac16678f4fa80bp13ac63jsnadcdde4c2a5b",
+            "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
+        }
+    };
+    
+    $.ajax(settings).done(function (response) {
+        recipeList.push(response.recipes[0]);
+        console.log("random");
+})};
+
+function findRandom(){
+    console.log("random1");
+    const settings = {
+        "async": false,
+        "crossDomain": true,
+        "url": `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random?tags=lunch&number=1`,
+        "method": "GET",
+        "headers": {
+            "X-RapidAPI-Key": "10aec3ffa7mshdac16678f4fa80bp13ac63jsnadcdde4c2a5b",
+            "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
+        }
+    };
+    
+    $.ajax(settings).done(function (response) {
+        recipeList.push(response.recipes[0]);
+        console.log("random");
+})};
+
+
+function setUp() {
+    findLast();
+    findSnack();
+    findRandom();
+    console.log(recipeList);
+    
+    displayRecipe(recipeList);
+  };
 
 document.getElementById('ingredient-input').addEventListener("keypress", function(event) {
     // If the user presses the "Enter" key on the keyboard
@@ -21,32 +80,37 @@ document.getElementById('ingredient-input').addEventListener("keypress", functio
       event.preventDefault();
       // Trigger the button element with a click
       document.getElementById("add-button").click();
+      document.getElementById("NAV-search-btn").click();
     }
   });
 
 function addIngredient() {
     let newIngredient = document.getElementById("ingredient-input").value;
-    console.log(newIngredient);
+    
     ingredientArray[ingredientCount] = newIngredient;
-    console.log(ingredientArray);
-    // const ingredientEl = $("<li>").addClass("list-group-item list-group-item-action");
     const ingridient = $("<span>");
     ingridient.text(newIngredient);
+
     const delButton = $("<button>").addClass("btn-close");
     delButton.attr("aria-label","Close");
     delButton.attr("item-count", ingredientCount);
     delButton.click(removeIngredient);
+
     const itemWrapper = $("<div>").addClass("list-item-wrapper");
     itemWrapper.append(ingridient);
     itemWrapper.append(delButton);
+
     const listItem = $("<li>").addClass(`list-group-item list-group-item-action ${ingredientCount}`);
     listItem.append(itemWrapper);
+
     const ingredientList = $(".ingredient-list");
     ingredientList.append(listItem);
+
     document.getElementById("ingredient-input").value = "";
+
     ingredientCount +=1;
+
     return delButton;
-    
 }
 
 function removeIngredient(event){
@@ -59,95 +123,38 @@ function removeIngredient(event){
     console.log(ingredientArray);
 }
 
-// Testing my new branch hihi 
-
-function fetchSpoon() {
-
-    $.getJSON("https://api.spoonacular.com/recipes/complexSearch?apiKey=f1ff032dbf3e458ea914a1c136a78dcc", function (data) {
-
-        console.log(data);
-
-    });
-}
-
-function randomRecipes() {
-    $.getJSON("https://api.spoonacular.com/recipes/random?apiKey=f1ff032dbf3e458ea914a1c136a78dcc", function (data) {
-
-        console.log(data);
-
-    })
-}
-
-// ADDING LEO CODE
-
-let ingredientCount = 0;
-let ingredientArray = [];
-let recipeList = [];
-
-// function getIngredient() {
-// 	const ingredientEls = $(".ingredient-input");
-// 	console.log(ingredients)
-// 	//single responsibility
-//     // block scope 
-//     const ingredients = ingredientEls.map(ingredientEl => console.log(ingredientEl));
-// }
-
-document.getElementById('ingredient-input').addEventListener("keypress", function (event) {
-    // If the user presses the "Enter" key on the keyboard
-    if (event.key === "Enter") {
-        // Cancel the default action, if needed
-        event.preventDefault();
-        // Trigger the button element with a click
-        document.getElementById("add-button").click();
-    }
-});
-
-function addIngredient() {
-    let newIngredient = document.getElementById("ingredient-input").value;
-    console.log(newIngredient);
-    ingredientArray[ingredientCount] = newIngredient;
-    console.log(ingredientArray);
-    // const ingredientEl = $("<li>").addClass("list-group-item list-group-item-action");
-    const ingridient = $("<span>");
-    ingridient.text(newIngredient);
-    const delButton = $("<button>").addClass("btn-close");
-    delButton.attr("aria-label", "Close");
-    delButton.attr("item-count", ingredientCount);
-    delButton.click(removeIngredient);
-    const itemWrapper = $("<div>").addClass("list-item-wrapper");
-    itemWrapper.append(ingridient);
-    itemWrapper.append(delButton);
-    const listItem = $("<li>").addClass(`list-group-item list-group-item-action ${ingredientCount}`);
-    listItem.append(itemWrapper);
-    const ingredientList = $(".ingredient-list");
-    ingredientList.append(listItem);
-    document.getElementById("ingredient-input").value = "";
-    ingredientCount += 1;
-    return delButton;
-
-}
-
-function removeIngredient(event) {
-    let number = event.target;
-    console.log(number.getAttribute("item-count"));
-    console.log(event.target);
-    const removedItem = $(`.${number.getAttribute("item-count")}`);
-    removedItem.remove();
-    ingredientArray[number.getAttribute("item-count")] = null;
-    console.log(ingredientArray);
-}
-
-function recipeFinder() {
+function recipeFinder(){
+    recipeCount = 0;
     const filtered = ingredientArray.filter(function (el) {
         return el != null;
     });
     searchRecipe(filtered.join(", "));
 }
 
-function searchRecipe(keyWords) {
-    const url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?ingredients=" + keyWords + "&number=10"
+function NAVrecipeSearch(event){
+    event.preventDefault();
+    let searchQuery = document.getElementById("NAV-search").value;
     const settings = {
-        "async": true,
+        "async": false,
+        "crossDomain": true,
+        "url": `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?query=${searchQuery}&number=18`,
+        "method": "GET",
+        "headers": {
+            "X-RapidAPI-Key": "10aec3ffa7mshdac16678f4fa80bp13ac63jsnadcdde4c2a5b",
+            "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
+        }
+    };
+    
+    $.ajax(settings).done(function (response) {
+        console.log(response);
+        recipeList = response.results;
+        displayRecipe(recipeList);
+});}
+
+function searchRecipe(keyWords){
+    const url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?ingredients=" + keyWords + "&number=18"
+    const settings = {
+        "async": false,
         "crossDomain": true,
         "url": url,
         "method": "GET",
@@ -157,26 +164,67 @@ function searchRecipe(keyWords) {
         }
     };
     $.ajax(settings).done(function (response) {
-        console.log(response);
-        recipeList = response;
-        displayRecipe(recipeList);
-        resetFind();
-    })
+	console.log(response);
+    recipeList = response;
+    displayRecipe(recipeList);
+})}
+
+function displayRecipe(recipeList){
+    for (let index = 0;index<3; index++){
+        console.log(recipeList);
+        console.log(index);
+        console.log(recipeList[index]);
+        recipeId.push(recipeList[index].id);
+        let recipe = $(`.card${(index+1)}-img-top`);
+        recipe.attr("src", recipeList[index].image);
+        let label = $(`.card-title${(index+1)}`);
+        if (isNaN(recipeList[index].likes)){
+            label.text(recipeList[index].title);
+        }
+        else{
+            label.text(recipeList[index].title + " (" + recipeList[index].likes +"👍)");    
+            let usedIngredientCount = $(`.used-ingredient${(index+1)}`);
+            usedIngredientCount.text(`Uses ${recipeList[index].usedIngredientCount} selected ingredient(s)`);
+            let missedIngredientCount = $(`.missed-ingredient${(index+1)}`);
+            missedIngredientCount.text(`Missing ${recipeList[index].missedIngredientCount} ingredient(s)`);
+        }
+    }
+
+    let showMoreBtn = $("#show-more");
+    showMoreBtn.removeClass("d-none").addClass("d-flex");
+    recipeId.join("%");
+    console.log(recipeId);
+    getRecipe(recipeId);
+    recipeId = [];
 }
 
-function displayRecipe(recipeList) {
-    var recipe1 = $(".card1-img-top");
-    recipe1.attr("src", recipeList[0].image);
-    var label1 = $(".card-title1");
-    label1.text(recipeList[0].title);
-    var recipe2 = $(".card2-img-top");
-    recipe2.attr("src", recipeList[1].image);
-    var label2 = $(".card-title2");
-    label2.text(recipeList[1].title);
-    var recipe3 = $(".card3-img-top");
-    recipe3.attr("src", recipeList[2].image);
-    var label3 = $(".card-title3");
-    label3.text(recipeList[2].title);
+function getRecipe(recipeId){
+    const url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/informationBulk?ids=" + recipeId
+    const settings = {
+        "async": false,
+        "crossDomain": true,
+        "url": url,
+        "method": "GET",
+        "headers": {
+            "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+            "X-RapidAPI-Key": "10aec3ffa7mshdac16678f4fa80bp13ac63jsnadcdde4c2a5b"
+        }
+    };
+    $.ajax(settings).done(function (response) {
+	console.log(response);
+    recipeInfo = response;
+    return recipeInfo;
+})}
+
+function showRecipe(event){
+    console.log("CLick")
+    let num = event.getAttribute("number");
+    number = parseInt(num);
+    let id = recipeId[(number-1)];
+    localStorage.setItem('lastRecipe', recipeInfo[(number-1)].id);
+    let recipeUrl = recipeInfo[(number-1)].sourceUrl;
+    window.open(recipeUrl, '_blank').focus();
+
 }
 
 function resetFind() {
@@ -186,32 +234,13 @@ function resetFind() {
     recipeList = [];
 }
 
-<<<<<<< HEAD
-// USDA API
-function fetchRecipes() {
-    // API request for USDA food list
-    $.getJSON("https://api.nal.usda.gov/fdc/v1/foods/list?api_key=nZxmwjSMlpgFxlnvqEMSLAhOnpHCFmRxENBsiGIA", function(data){
-    
-        console.log(data);
-    
-    });
-=======
-// function fetchRecipes() {
-//     // API request for USDA food list
-//     $.getJSON("https://api.nal.usda.gov/fdc/v1/foods/list?api_key=nZxmwjSMlpgFxlnvqEMSLAhOnpHCFmRxENBsiGIA", function(data){
-
-//         console.log(data);
-
-//     });
->>>>>>> d7a32248a20bd9d96886f91119c89eaf162feb8e
-
+function showMore(){
+    console.log("SHOWMORE");
+    console.log(recipeList);
+    recipeList.splice(0,3);
+    console.log(recipeList);
+    displayRecipe(recipeList);
 }
-
-// const ingredientSearchButton = document.getElementById("ingredientSearchButton");
-// ingredientSearchButton.addEventListener("click", fetchRecipes);
-
-
-
 
 //LIGHT DARK MODE START
 var themeButtonEl = $('#theme-btn');
@@ -227,46 +256,3 @@ themeButtonEl.on('click', function () {
     }
 });
 //LIGHT DARK MODE END
-
-//SEARCH BAR START
-let = searchable = [recipeList];
-
-const searchInput = document.getElementById('search');
-const searchWrapper = document.querySelector('.d-flex');
-const resultsWrapper = document.querySelector('.results');
-const searchButton = document.getElementById('searchbtn');
-
-searchButton.addEventListener('click', (e) => {
-    console.log('i have been clicked tho');
-});
-
-
-searchInput.addEventListener('keyup', (e) => { // when a key is typed inside search bar
-    console.log(e.target.value);                // log it
-    let results = [];
-    let input = searchInput.value;
-
-    if (input.length) {
-        results = searchable.filter((item) => {
-            return item.toString().toLowerCase().includes(input.toString().toLowerCase());
-        });
-    }
-
-    renderResults(results);
-});
-
-function renderResults(results) {
-    if (!results.length) {
-        return searchWrapper.classList.remove('show');
-    }
-
-    let content = results.map((item) => {
-        return `<li>${item}</li>`
-    }).join('');
-
-    searchWrapper.classList.add('show')
-    resultsWrapper.innerHTML = `<ul>${content}</ul>`;
-}
-
-//SEARCH BAR END
-
