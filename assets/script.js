@@ -227,7 +227,7 @@ function showRecipe(event){
 
 }
 
-function resetFind(){
+function resetFind() {
     $(".list-group-item").remove();
     ingredientCount = 0;
     ingredientArray = [];
@@ -242,3 +242,17 @@ function showMore(){
     displayRecipe(recipeList);
 }
 
+//LIGHT DARK MODE START
+var themeButtonEl = $('#theme-btn');
+var isDark = true;
+
+themeButtonEl.on('click', function () {
+    if (isDark) {
+        $('body').css({ 'background-color': '#ffffff', color: '#1a1a1a' });
+        isDark = !isDark;
+    } else {
+        $('body').css({ 'background-color': '#1a1a1a', color: '#1a1a1a' });
+        isDark = !isDark;
+    }
+});
+//LIGHT DARK MODE END
