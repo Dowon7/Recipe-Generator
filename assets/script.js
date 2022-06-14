@@ -4,11 +4,14 @@ let recipeList = [];
 let recipeId = [];
 let recipeInfo;
 
+setUp();
+
 function findLast(){
+    console.log("last1");
     let lastRecipe = window.localStorage.getItem('lastRecipe');
     console.log(lastRecipe);
     const settings = {
-        "async": true,
+        "async": false,
         "crossDomain": true,
         "url": `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/${lastRecipe}/information`,
         "method": "GET",
@@ -25,10 +28,11 @@ function findLast(){
 };
 
 function findSnack(){
+    console.log("snack1");
     const settings = {
-        "async": true,
+        "async": false,
         "crossDomain": true,
-        "url": `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?maxReadyTime=15&number=1`,
+        "url": `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random?tags=dessert&number=1`,
         "method": "GET",
         "headers": {
             "X-RapidAPI-Key": "10aec3ffa7mshdac16678f4fa80bp13ac63jsnadcdde4c2a5b",
@@ -37,15 +41,16 @@ function findSnack(){
     };
     
     $.ajax(settings).done(function (response) {
-        recipeList.push(response.results[0]);
-        console.log("snack");
+        recipeList.push(response.recipes[0]);
+        console.log("random");
 })};
 
 function findRandom(){
+    console.log("random1");
     const settings = {
-        "async": true,
+        "async": false,
         "crossDomain": true,
-        "url": `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random?&number=1`,
+        "url": `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random?tags=lunch&number=1`,
         "method": "GET",
         "headers": {
             "X-RapidAPI-Key": "10aec3ffa7mshdac16678f4fa80bp13ac63jsnadcdde4c2a5b",
@@ -59,12 +64,12 @@ function findRandom(){
 })};
 
 
-window.onload = function() {
+function setUp() {
     findLast();
     findSnack();
     findRandom();
     console.log(recipeList);
-
+    
     displayRecipe(recipeList);
   };
 
@@ -130,7 +135,7 @@ function NAVrecipeSearch(event){
     event.preventDefault();
     let searchQuery = document.getElementById("NAV-search").value;
     const settings = {
-        "async": true,
+        "async": false,
         "crossDomain": true,
         "url": `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?query=${searchQuery}&number=18`,
         "method": "GET",
@@ -149,7 +154,7 @@ function NAVrecipeSearch(event){
 function searchRecipe(keyWords){
     const url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?ingredients=" + keyWords + "&number=18"
     const settings = {
-        "async": true,
+        "async": false,
         "crossDomain": true,
         "url": url,
         "method": "GET",
@@ -166,8 +171,9 @@ function searchRecipe(keyWords){
 
 function displayRecipe(recipeList){
     for (let index = 0;index<3; index++){
-        console.log(recipeList)
-        console.log(recipeList[0]);
+        console.log(recipeList);
+        console.log(index);
+        console.log(recipeList[index]);
         recipeId.push(recipeList[index].id);
         let recipe = $(`.card${(index+1)}-img-top`);
         recipe.attr("src", recipeList[index].image);
@@ -195,7 +201,7 @@ function displayRecipe(recipeList){
 function getRecipe(recipeId){
     const url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/informationBulk?ids=" + recipeId
     const settings = {
-        "async": true,
+        "async": false,
         "crossDomain": true,
         "url": url,
         "method": "GET",
@@ -227,3 +233,29 @@ function resetFind(){
     ingredientArray = [];
     recipeList = [];
 }
+
+function showMore(){
+    console.log("SHOWMORE");
+    console.log(recipeList);
+    recipeList.splice(0,3);
+    console.log(recipeList);
+    displayRecipe(recipeList);
+}
+
+
+// function showInfo(event){
+//     let cardNum = event.target.getAttribute("card")
+
+// }
+// function fetchRecipes() {
+//     // API request for USDA food list
+//     $.getJSON("https://api.nal.usda.gov/fdc/v1/foods/list?api_key=nZxmwjSMlpgFxlnvqEMSLAhOnpHCFmRxENBsiGIA", function(data){
+    
+//         console.log(data);
+    
+//     });
+
+// // }
+
+// const ingredientSearchButton = document.getElementById("ingredientSearchButton");
+// ingredientSearchButton.addEventListener("click", fetchRecipes);
