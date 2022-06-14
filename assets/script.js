@@ -80,7 +80,6 @@ document.getElementById('ingredient-input').addEventListener("keypress", functio
       event.preventDefault();
       // Trigger the button element with a click
       document.getElementById("add-button").click();
-      document.getElementById("NAV-search-btn").click();
     }
   });
 
