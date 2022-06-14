@@ -242,17 +242,19 @@ function showMore(){
     displayRecipe(recipeList);
 }
 
-//LIGHT DARK MODE START
-var themeButtonEl = $('#theme-btn');
-var isDark = true;
+//dark mode
+var isDark = false;
 
-themeButtonEl.on('click', function () {
+document.getElementById('NAV-theme-btn').addEventListener("click", function(){
+  
+    
     if (isDark) {
         $('body').css({ 'background-color': '#ffffff', color: '#1a1a1a' });
         isDark = !isDark;
+
     } else {
         $('body').css({ 'background-color': '#1a1a1a', color: '#1a1a1a' });
         isDark = !isDark;
-    }
-});
-//LIGHT DARK MODE END
+    }  
+})
+
