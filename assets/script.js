@@ -242,7 +242,6 @@ function showMore(){
     displayRecipe(recipeList);
 }
 
-
 //dark mode
 var isDark = false;
 
@@ -256,7 +255,6 @@ document.getElementById('NAV-theme-btn').addEventListener("click", function(){
     } else {
         $('body').css({ 'background-color': '#1a1a1a', color: '#1a1a1a' });
         isDark = !isDark;
-    }
-
-    
+    }  
 })
+

@@ -17,14 +17,3 @@ card{
 .list-item-wrapper span {
     grid-column: 1 / 12;
 }
-    
-
-#navbar-nav {
-    position: relative;
-}
-
-#theme-btn {
-    margin-left: 25rem;
-    position: absolute;
-    z-index: 2;
-}
