@@ -16,7 +16,9 @@ If the recipes for the food and cocktails are not to your liking, you can use th
 Some things about the webpage:
 
 *The First Recipe card should be the last recipe selected from your previous sessions
+
 *Then Second and Third recipe card should be a snack and main course recipe respectively
+
 *You are able to query search in the search bar, enter can also be used after typing in an ingredient, rather than clicking the search button next to the search text bar.
 
 ![Demo Gif](assets/Ingridio-demo.gif)
