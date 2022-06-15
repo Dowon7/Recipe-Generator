@@ -19,8 +19,6 @@ Some things about the webpage:
 
 *Then Second and Third recipe card should be a snack and main course recipe respectively
 
-*You are able to query search in the search bar, enter can also be used after typing in an ingredient, rather than clicking the search button next to the search text bar.
-
 ![Demo Gif](assets/Ingridio-demo.gif)
 
 [Access the recipe finder here!](https://dowon7.github.io/Recipe-Generator/)
