@@ -13,6 +13,12 @@ The APIs would then allow us to display an image linked with the recipe, and the
 
 If the recipes for the food and cocktails are not to your liking, you can use the "show more" button to see more selections of recipes available.
 
+Some things about the webpage:
+
+*The First Recipe card should be the last recipe selected from your previous sessions
+
+*Then Second and Third recipe card should be a snack and main course recipe respectively
+
 ![Demo Gif](assets/Ingridio-demo.gif)
 
 [Access the recipe finder here!](https://dowon7.github.io/Recipe-Generator/)

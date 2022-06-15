@@ -80,7 +80,6 @@ document.getElementById('ingredient-input').addEventListener("keypress", functio
       event.preventDefault();
       // Trigger the button element with a click
       document.getElementById("add-button").click();
-      document.getElementById("NAV-search-btn").click();
     }
   });
 
@@ -242,14 +241,16 @@ function showMore(){
     displayRecipe(recipeList);
 }
 
-//LIGHT DARK MODE START
-var themeButtonEl = $('#theme-btn');
-var isDark = true;
+//dark mode
+var isDark = false;
 
-themeButtonEl.on('click', function () {
+document.getElementById('NAV-theme-btn').addEventListener("click", function(){
+  
+    
     if (isDark) {
         $('body').css({ 'background-color': '#ffffff', color: '#1a1a1a' });
         isDark = !isDark;
+
     } else {
         $('body').css({ 'background-color': '#1a1a1a', color: '#1a1a1a' });
         isDark = !isDark;
@@ -334,3 +335,7 @@ function mealRecipeModal(meal){
     mealDetailsContent.innerHTML = html;
     mealDetailsContent.parentElement.classList.add('showRecipe');
 }
+    }  
+})
+
+
