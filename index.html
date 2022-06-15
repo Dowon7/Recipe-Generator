@@ -31,90 +31,95 @@
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Ingridio</a>
-
-                <form class="d-flex" role="search">
-                    <input id="NAV-search" class="form-control me-2" type="search" placeholder="Search Recipes" aria-label="Search">
-                    <button id="NAV-search-btn" class="btn btn-outline-success" type="submit" onClick="NAVrecipeSearch(event)">Search </button>
-
-
-                    <button id="NAV-theme-btn" class="btn btn-outline-success" type="submit" onClick="NAVrecipeSearch(event)">Change Theme </button>
-
-                </form>
                 
             </div>
     </nav>
 
-    <div class="container">
-        <!-- generate dynamically based on the JSON(api) -->
-        <div class="row gy-5 py-3">
-            <div class="col-sm-4">
-                <div class="card">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg"
-                        class="card1-img-top" alt="photograph of a variety of food">
-                    <div class="card-body">
-                        <h5 class="card-title1">Special title treatment</h5>
-                        <p class="used-ingredient1"></p>
-                        <p class="missed-ingredient1"></p>
-                        <button class="btn btn-primary" number="1" onClick="showRecipe(this)">See Recipe</button>
-                    </div>
-                </div>
+    <div class = "container">
+        <div class = "meal-wrapper">
+          <div class = "meal-search">
+            <h2 class = "title">Find Meals For Your Ingredients</h2>
+            
+    
+            <div class = "meal-search-box">
+              <input type = "text" class = "search-control" placeholder="Enter an ingredient" id = "search-input">
+              <button type = "submit" class = "search-btn btn" id = "search-btn">
+                <i class = "fas fa-search"></i>
+              </button>
             </div>
-            <div class="col-sm-4">
-                <div class="card">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg"
-                        class="card2-img-top" alt="photograph of a variety of food">
-                    <div class="card-body">
-                        <h5 class="card-title2">Special title treatment</h5>
-                        <p class="used-ingredient2"></p>
-                        <p class="missed-ingredient2"></p>
-                        <button class="btn btn-primary" number="2" onClick=showRecipe(this)>See Recipe</button>
-                    </div>
+          </div>
+    
+          <div class = "meal-result">
+            <h2 class = "title">Your Search Results:</h2>
+            <div id= "meal">
+              <!-- meal item -->
+               <div class = "meal-item">
+                <div class = "meal-img">
+                  <img src = "Noodles.jpg" alt = "food">
                 </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="card">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg"
-                        class="card3-img-top" alt="photograph of a variety of food">
-                    <div class="card-body">
-                        <h5 class="card-title3">Special title treatment</h5>
-                        <p class="used-ingredient3"></p>
-                        <p class="missed-ingredient3"></p>
-                        <button class="btn btn-primary" number="3" onClick="showRecipe(this)">See Recipe</button>
-                    </div>
+                <div class = "meal-name">
+                  <h3>Potato Chips</h3>
+                  <a href = "#" class = "recipe-btn">Get Recipe</a>
                 </div>
+              </div>
+              <!-- end of meal item -->
+              <!-- meal item -->
+               <div class = "meal-item">
+                <div class = "meal-img">
+                  <img src = "Noodles.jpg" alt = "food">
+                </div>
+                <div class = "meal-name">
+                  <h3>Potato Chips</h3>
+                  <a href = "#" class = "recipe-btn">Get Recipe</a>
+                </div>
+              </div> 
+              <!-- end of meal item -->
+              <!-- meal item -->
+               <div class = "meal-item">
+                <div class = "meal-img">
+                  <img src = "Noodles.jpg" alt = "food">
+                </div>
+                <div class = "meal-name">
+                  <h3>Potato Chips</h3>
+                  <a href = "#" class = "recipe-btn">Get Recipe</a>
+                </div>
+              </div> 
+              <!-- end of meal item -->
             </div>
+          </div>
+    
+    
+          <div class = "meal-details">
+            <!-- recipe close btn -->
+            <button type = "button" class = "btn recipe-close-btn" id = "recipe-close-btn">
+              <i class = "fas fa-times"></i>
+            </button>
+    
+            <!-- meal content -->
+            <div class = "meal-details-content">
+               <h2 class = "recipe-title">Meals Name Here</h2>
+              <p class = "recipe-category">Category Name</p>
+              <div class = "recipe-instruct">
+                <h3>Instructions:</h3>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo blanditiis quis accusantium natus! Porro, reiciendis maiores molestiae distinctio veniam ratione ex provident ipsa, soluta suscipit quam eos velit autem iste!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet aliquam voluptatibus ad obcaecati magnam, esse numquam nisi ut adipisci in?</p>
+              </div>
+              <div class = "recipe-meal-img">
+                <img src = "Noodles.jpg" alt = "">
+              </div>
+              <div class = "recipe-link">
+                <a href = "#" target = "_blank">Watch Video</a>
+              </div> -->
+            </div>
+          </div>
         </div>
-    <div id="show-more" class="d-none py-2 justify-content-end">
-        <button class="btn btn-primary" onClick="showMore()">Show More</button>
-    </div>
-        
-        <div class="d-grid py-2">
-
-             <button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#ingredientModal">Ingredient Recipe Search</button>
-
-        </div>
-
-        <!-- Modal -->
-        <div class="modal fade" id="ingredientModal" tabindex="-1" aria-labelledby="ingredientModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="ingredientModalLabel">Input ingredient(s)</h5>
-                        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <input type="text" id="ingredient-input">
-                        <button type="button" id="add-button" onclick="addIngredient()">Add</button>
-                        <ul class="list-group list-group-light ingredient-list"></ul>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" onClick="resetFind()">Reset Find</button>
-                        <button type="button" class="btn btn-primary" onclick="recipeFinder(event)" data-mdb-dismiss="modal" id="ingredientSearchButton">Bring Up Recipes</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+      </div>
+    
+    
+    
+      <script src = "script.js"></script>
+    </body>
+    </html>
     
 
 <!-- ------------------------------------------------------------------------------ -->
